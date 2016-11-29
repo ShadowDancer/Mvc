@@ -123,8 +123,8 @@ namespace Microsoft.AspNetCore.Mvc.ViewFeatures.Internal
             }
 
             var formatString = _readOnly ?
-                viewData.ModelMetadata.DisplayFormatString
-                : viewData.ModelMetadata.EditFormatString;
+                viewData.ModelMetadata.DisplayFormatString :
+                viewData.ModelMetadata.EditFormatString;
             if (_model != null && !string.IsNullOrEmpty(formatString))
             {
                 formattedModelValue = string.Format(CultureInfo.CurrentCulture, formatString, formattedModelValue);

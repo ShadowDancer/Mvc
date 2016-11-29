@@ -71,7 +71,6 @@ namespace Microsoft.AspNetCore.Mvc.FunctionalTests
             }
         }
 
-
         [Fact]
         public async Task EnumValues_SerializeCorrectly()
         {

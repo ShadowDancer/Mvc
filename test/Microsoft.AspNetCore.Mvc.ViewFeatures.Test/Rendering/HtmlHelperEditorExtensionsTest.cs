@@ -7,15 +7,16 @@ using Microsoft.AspNetCore.Mvc.TestCommon;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Moq;
 using Xunit;
-using static Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperDisplayExtensionsTest;
+//using static Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperDisplayExtensionsTest;
 
 namespace Microsoft.AspNetCore.Mvc.Rendering
 {
     public class HtmlHelperEditorExtensionsTest
     {
         [Theory]
-        [MemberData(nameof(EnumUnformattedModels), MemberType = typeof(HtmlHelperDisplayExtensionsTest))]
-        public void Display_UsesTemplateUnFormatted(FormatModel model, string expectedResult)
+        [MemberData(nameof(HtmlHelperDisplayExtensionsTest.EnumUnformattedModels),
+            MemberType = typeof(HtmlHelperDisplayExtensionsTest))]
+        public void Display_UsesTemplateUnFormatted(HtmlHelperDisplayExtensionsTest.FormatModel model, string expectedResult)
         {
             // Arrange
             var view = new Mock<IView>();
@@ -40,8 +41,8 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         }
 
         [Theory]
-        [MemberData(nameof(EnumFormatModels), MemberType = typeof(HtmlHelperDisplayExtensionsTest))]
-        public void Display_UsesTemplateFormatted(FormatModel model, string expectedResult)
+        [MemberData(nameof(HtmlHelperDisplayExtensionsTest.EnumFormatModels), MemberType = typeof(HtmlHelperDisplayExtensionsTest))]
+        public void Display_UsesTemplateFormatted(HtmlHelperDisplayExtensionsTest.FormatModel model, string expectedResult)
         {
             // Arrange
             var view = new Mock<IView>();
@@ -64,6 +65,5 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
             // Assert
             Assert.Equal(expectedResult, HtmlContentUtilities.HtmlContentToString(displayResult));
         }
-
     }
 }
