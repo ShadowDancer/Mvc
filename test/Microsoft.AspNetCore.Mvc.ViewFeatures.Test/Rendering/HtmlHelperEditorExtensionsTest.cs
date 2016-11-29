@@ -7,49 +7,14 @@ using Microsoft.AspNetCore.Mvc.TestCommon;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Moq;
 using Xunit;
+using static Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperDisplayExtensionsTest;
 
 namespace Microsoft.AspNetCore.Mvc.Rendering
 {
     public class HtmlHelperEditorExtensionsTest
     {
-        public static TheoryData<FormatModel, string> EnumFormatModels
-        {
-            get
-            {
-                return new TheoryData<FormatModel, string>
-                {
-                    {
-                        new FormatModel{ FormatProperty = Status.Created },
-                        "Value: CreatedKey"
-                    },
-                    {
-                        new FormatModel { FormatProperty = Status.Done },
-                        "Value: Done"
-                    }
-                };
-            }
-        }
-
-        public static TheoryData<FormatModel, string> EnumUnformattedModels
-        {
-            get
-            {
-                return new TheoryData<FormatModel, string>
-                {
-                    {
-                        new FormatModel {NonFormatProperty = Status.Created },
-                        "CreatedKey"
-                    },
-                    {
-                        new FormatModel {NonFormatProperty = Status.Done },
-                        "Done"
-                    }
-                };
-            }
-        }
-
         [Theory]
-        [MemberData(nameof(EnumUnformattedModels))]
+        [MemberData(nameof(EnumUnformattedModels), MemberType = typeof(HtmlHelperDisplayExtensionsTest))]
         public void Display_UsesTemplateUnFormatted(FormatModel model, string expectedResult)
         {
             // Arrange
@@ -75,7 +40,7 @@ namespace Microsoft.AspNetCore.Mvc.Rendering
         }
 
         [Theory]
-        [MemberData(nameof(EnumFormatModels))]
+        [MemberData(nameof(EnumFormatModels), MemberType = typeof(HtmlHelperDisplayExtensionsTest))]
         public void Display_UsesTemplateFormatted(FormatModel model, string expectedResult)
         {
             // Arrange

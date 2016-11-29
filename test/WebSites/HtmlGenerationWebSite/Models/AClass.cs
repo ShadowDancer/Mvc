@@ -3,7 +3,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace HtmlGenerationWebSite
+namespace HtmlGenerationWebSite.Models
 {
     public class AClass
     {
